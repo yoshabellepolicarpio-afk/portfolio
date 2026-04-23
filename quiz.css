@@ -1,11 +1,11 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: #f5f7fa;
+    background:#FFFFF0
 }
 
 .header {
-    background: #2c3e50;
+    background: #FF69B4;
     color: white;
     text-align: center;
     padding: 20px;
