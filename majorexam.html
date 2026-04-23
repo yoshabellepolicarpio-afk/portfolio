@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="quiz.css"/>
+    <title> MAJOR EXAM </title>
+</head>
+
+<body>
+
+    <div class="header"> 
+        <h1>MAJOR EXAM</h1>
+    </div>
+
+    <div class="home-button">
+        <a href="index.html"><button>HOME</button></a>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-box">
+        <h2>Upload Major Exam</h2>
+
+        <input type="file" id="imageInput" accept="image/*">
+        <input type="text" id="imageName" placeholder="Enter name (e.g. Major Exam 1)">
+        <button onclick="addImage()">Submit</button>
+    </div>
+
+    <!-- Empty Gallery -->
+    <div class="gallery" id="gallery"></div>
+
+<script>
+function addImage() {
+    const fileInput = document.getElementById("imageInput");
+    const nameInput = document.getElementById("imageName");
+
+    const file = fileInput.files[0];
+    const name = nameInput.value;
+
+    if (!file || !name) {
+        alert("Please complete all fields.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const container = document.createElement("div");
+        container.className = "card";
+
+        container.innerHTML = `
+            <img src="${e.target.result}" />
+            <p>${name}</p>
+        `;
+
+        document.getElementById("gallery").appendChild(container);
+    };
+
+    reader.readAsDataURL(file);
+
+    fileInput.value = "";
+    nameInput.value = "";
+}
+</script>
+
+</body>
+</html>

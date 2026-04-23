@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="quiz.css"/>
+    <title> QUIZ </title>
+</head>
+
+<body>
+
+    <div class="header"> 
+        <h1>QUIZ</h1>
+    </div>
+
+    <div class="home-button">
+        <a href="index.html"><button>HOME</button></a>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-box">
+        <h2>Upload Quiz</h2>
+
+        <input type="file" id="imageInput" accept="image/*">
+        <input type="text" id="imageName" placeholder="Enter name (e.g. Quiz No. 3)">
+        <button onclick="addImage()">Submit</button>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery" id="gallery">
+
+        <!-- ✅ HARD CODED QUIZZES -->
+        <div class="card">
+            <img src="quiz/quiz1.png.jpg" alt="Quiz 1">
+            <p>Quiz 1</p>
+        </div>
+
+        <div class="card">
+            <img src="quiz/quiz2.png.jpg" alt="Quiz 2">
+            <p>Quiz 2</p>
+        </div>
+
+    </div>
+
+<script>
+function addImage() {
+    const fileInput = document.getElementById("imageInput");
+    const nameInput = document.getElementById("imageName");
+
+    const file = fileInput.files[0];
+    const name = nameInput.value;
+
+    if (!file || !name) {
+        alert("Please complete all fields.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const container = document.createElement("div");
+        container.className = "card";
+
+        container.innerHTML = `
+            <img src="${e.target.result}" />
+            <p>${name}</p>
+        `;
+
+        document.getElementById("gallery").appendChild(container);
+    };
+
+    reader.readAsDataURL(file);
+
+    fileInput.value = "";
+    nameInput.value = "";
+}
+</script>
+
+</body>
+</html>
