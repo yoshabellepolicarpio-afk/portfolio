@@ -7,7 +7,7 @@ body {
 /* Title */
 #title {
     text-align: center;
-    background: #FF69B4;
+    background: indigo;
     color: white;
     padding: 20px;
 }
@@ -19,7 +19,7 @@ body {
 }
 
 .buttons button {
-    background: #FF69B4;
+    background: indigo;
     color: white;
     border: none;
     padding: 12px 20px;
